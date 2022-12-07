@@ -1,8 +1,10 @@
 using CRM.Services.Identity.Data;
 using CRM.Services.Identity.Infrastructure;
+using CRM.Services.Identity.MessageSenders;
 using CRM.Services.Identity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -32,6 +34,8 @@ services.AddScoped<UserManager<User>, AppUserManager>();
 services.AddScoped<RoleManager<Role>, AppRoleManager>();
 services.AddScoped<SignInManager<User>, AppSignInManager>();
 services.AddScoped<RoleStore<Role, DatabaseContext, Guid, UserRole, RoleClaim>, AppRoleStore>();
+services.AddScoped<IEmailSender, EmailMessageSender>();
+//services.AddScoped<ISmsSender, SmsMessageSender>();
 
 
 services.AddDatabaseDeveloperPageExceptionFilter();
