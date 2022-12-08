@@ -1,0 +1,101 @@
+﻿@page
+@model RegisterModel
+
+@{
+    var pageTitle =
+    Resources.PageTitles.Register;
+
+    ViewData["Title"] = pageTitle;
+}
+
+
+<form method="post" asp-route-returnUrl="@Model.ReturnUrl">
+
+    <div class="container my-0 my-sm-1 my-md-3 my-lg-5">
+        <div class="row">
+            <div class="col-12 p-3   col-md-8 offset-md-2 p-md-4   col-lg-6 offset-lg-3 p-lg-5   bg-light border border-2 rounded-3 shadow-lg">
+                <fieldset>
+                    <legend>
+                        @(pageTitle)
+                    </legend>
+
+                    <hr />
+
+                    <partial name="PartialViews/_DisplayPageMessages" />
+
+                    <input type="hidden" value="@(Model.ReturnUrl)" />
+
+                    <div class="mb-3">
+                        <label asp-for="ViewModel.Email" class="form-label"></label>
+
+                        <div class="input-group">
+                            <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
+                            <input asp-for="ViewModel.Email" class="form-control" dir="ltr" />
+                        </div>
+
+                        <span asp-validation-for="ViewModel.Email" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="ViewModel.Password" class="form-label"></label>
+
+                        <div class="input-group">
+                            <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                            <input asp-for="ViewModel.Password" class="form-control" dir="ltr" />
+                        </div>
+
+                        <span asp-validation-for="ViewModel.Password" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label asp-for="ViewModel.ConfirmPassword" class="form-label"></label>
+
+                        <div class="input-group">
+                            <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+                            <input asp-for="ViewModel.ConfirmPassword" class="form-control" dir="ltr" />
+                        </div>
+
+                        <span asp-validation-for="ViewModel.ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <button type="submit" class="btn btn-primary">@(Resources.ButtonCaptions.Login)</button>
+                        <button type="reset" class="btn btn-secondary">@(Resources.ButtonCaptions.Reset)</button>
+                    </div>
+                </fieldset>
+
+                <hr class="mt-4" />
+
+                <div class="text-center">
+                    <a asp-page="/Index" class="text-decoration-none">
+                        @(Resources.ButtonCaptions.Home)
+                    </a>
+                    |
+                    <a asp-page="/Account/Login" class="text-decoration-none">
+                        @(Resources.ButtonCaptions.Login)
+                    </a>
+
+                    <br />
+
+                    <a href="#" class="text-decoration-none">
+                        @(Resources.ButtonCaptions.ForgotUsername)
+                    </a>
+                    |
+                    <a href="#" class="text-decoration-none">
+                        @(Resources.ButtonCaptions.ForgotPassword)
+                    </a>
+
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
