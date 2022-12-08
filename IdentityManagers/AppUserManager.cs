@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using CRM.Services.Identity.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 
-namespace CRM.Services.Identity.Models;
+namespace CRM.Services.Identity.IdentityManagers;
 
 public class AppUserManager : UserManager<User>
 {

@@ -1,4 +1,5 @@
 using CRM.Services.Identity.Data;
+using CRM.Services.Identity.IdentityManagers;
 using CRM.Services.Identity.Infrastructure;
 using CRM.Services.Identity.Infrastructure.Middlewares;
 using CRM.Services.Identity.Infrastructure.Settings;
@@ -43,7 +44,7 @@ services.AddScoped<
     UserLogin,
     UserToken,
     RoleClaim>,
-    CRM.Services.Identity.Models.AppUserStore>();
+    AppUserStore>();
 
 services.AddScoped<UserManager<User>, AppUserManager>();
 services.AddScoped<RoleManager<Role>, AppRoleManager>();
@@ -80,7 +81,8 @@ services.AddIdentityServer(options =>
     .AddInMemoryClients(InMemroyConfigurations.Clients)
     .AddInMemoryApiScopes(InMemroyConfigurations.ApiScopes)
     .AddAspNetIdentity<User>()
-    .AddDeveloperSigningCredential();
+    .AddDeveloperSigningCredential()
+    .AddProfileService<ProfileManager>();
 
 
 

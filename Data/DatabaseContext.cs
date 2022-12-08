@@ -30,7 +30,7 @@ namespace CRM.Services.Identity.Data
             };
 
 
-            //builder.ApplyConfigurationsFromAssembly(typeof(UserConfigurations).Assembly);
+            builder.ApplyConfigurationsFromAssembly(typeof(UserConfigurations).Assembly);
         }
     }
 }
