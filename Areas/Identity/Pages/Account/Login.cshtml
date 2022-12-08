@@ -26,31 +26,31 @@
                     <input type="hidden" value="@(Model.ReturnUrl)" />
 
                     <div class="mb-3">
-                        <label asp-for="Input.Email" class="form-label"></label>
+                        <label asp-for="ViewModel.Email" class="form-label"></label>
 
                         <div class="input-group">
                             <div class="input-group-text"><i class="bi bi-person-fill"></i></div>
-                            <input asp-for="Input.Email" class="form-control" dir="ltr" />
+                            <input asp-for="ViewModel.Email" class="form-control" dir="ltr" />
                         </div>
 
-                        <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        <span asp-validation-for="ViewModel.Email" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
-                        <label asp-for="Input.Password" class="form-label"></label>
+                        <label asp-for="ViewModel.Password" class="form-label"></label>
 
                         <div class="input-group">
                             <div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
-                            <input asp-for="Input.Password" class="form-control" dir="ltr" />
+                            <input asp-for="ViewModel.Password" class="form-control" dir="ltr" />
                         </div>
 
-                        <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        <span asp-validation-for="ViewModel.Password" class="text-danger"></span>
                     </div>
 
                     <div class="mb-3">
                         <div class="form-check">
-                            <input asp-for="Input.RememberMe" class="form-check-input" />
-                            <label asp-for="Input.RememberMe" class="form-check-label"></label>
+                            <input asp-for="ViewModel.RememberMe" class="form-check-input" />
+                            <label asp-for="ViewModel.RememberMe" class="form-check-label"></label>
                         </div>
                     </div>
 

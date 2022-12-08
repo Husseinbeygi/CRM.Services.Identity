@@ -41,7 +41,7 @@ namespace CRM.Services.Identity.Areas.Identity.Pages.Account
         }
 
         [BindProperty]
-        public RegisterViewModels ViewModel { get; set; }
+        public RegisterViewModel ViewModel { get; set; }
 
         public string ReturnUrl { get; set; }
 
