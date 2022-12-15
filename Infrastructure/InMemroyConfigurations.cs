@@ -33,9 +33,9 @@ public static class InMemroyConfigurations
 						new Secret("7dcd9407-10b0-42e9-99bd-13ff89590e0c".Sha256())
 					},
 
-					RedirectUris=new List<string>
+					RedirectUris=new List<string> 
 					{
-						"https://localhost:7282/authentication/login-callback"
+						"https://localhost:7083/authentication/login-callback"
 					},
 
 					Claims =  new List<ClientClaim>

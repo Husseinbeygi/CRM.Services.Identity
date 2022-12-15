@@ -5,11 +5,15 @@ using CRM.Services.Identity.Infrastructure.Middlewares;
 using CRM.Services.Identity.Infrastructure.Settings;
 using CRM.Services.Identity.MessageSenders;
 using CRM.Services.Identity.Models;
+using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,6 +70,10 @@ services.AddIdentity<User, Role>(options =>
               .AddSignInManager<AppSignInManager>()
               .AddDefaultTokenProviders();
 
+var x509 = new X509Certificate2(
+	 File.ReadAllBytes("key.pfx"),"123456789");
+
+
 services.AddIdentityServer(options =>
 {
     options.UserInteraction.ErrorUrl = "/Error";
@@ -81,8 +89,9 @@ services.AddIdentityServer(options =>
     .AddInMemoryClients(InMemroyConfigurations.Clients)
     .AddInMemoryApiScopes(InMemroyConfigurations.ApiScopes)
     .AddAspNetIdentity<User>()
-    .AddDeveloperSigningCredential()
-    .AddProfileService<ProfileManager>();
+    .AddSigningCredential(x509)
+	.AddValidationKey(x509)
+	.AddProfileService<ProfileManager>();
 
 
 
